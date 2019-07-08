@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5f6543e-3a0c-48a7-9dae-c945b064e69f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/export_common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/export_dao/export_dao.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/export_dao/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/export_domain/export_domain.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/export_domain/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/export_service_system/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/export_web_manager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/export_web_manager/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b5f6543e-3a0c-48a7-9dae-c945b064e69f" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/export_web_manager/target/" />
@@ -54,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/export_dao/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="250">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -160,15 +148,15 @@
       <option name="presentableId" value="Default" />
       <updated>1562592708913</updated>
       <workItem from="1562592712234" duration="1198000" />
-      <workItem from="1562595240316" duration="3825000" />
+      <workItem from="1562595240316" duration="4777000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5023000" />
+    <option name="totallyTimeSpent" value="5975000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="89" y="46" width="1404" height="784" extended-state="1" />
+    <frame x="32" y="36" width="1404" height="784" extended-state="0" />
     <layout>
       <window_info id="Web" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25334322" />
@@ -240,7 +228,7 @@
     <entry file="file://$PROJECT_DIR$/export_dao/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>

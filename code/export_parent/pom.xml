@@ -13,6 +13,13 @@
         <module>export_domain</module>
         <module>export_dao</module>
         <module>export_common</module>
+        <module>export_system_service</module>
+        <module>export_system_interface</module>
+        <module>export_cargo_service</module>
+        <module>export_cargo_interface</module>
+        <module>export_stat_interface</module>
+        <module>export_stat_service</module>
+        <module>export_web_portal</module>
     </modules>
     <packaging>pom</packaging>
 

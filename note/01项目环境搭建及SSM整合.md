@@ -47,3 +47,12 @@ export_cargo_service  依赖   export_cargo_interface
 ​													 export_dao                       
 
 export_dao                       依赖     export_domain 
+
+#### 4、配置Mybatis环境
+
+使用Mybastis_Generator逆向工程，从数据库表中生成实体类(手动添加实现序列化结构)等，
+
+拷贝实体类，dao接口，mapper映射文件
+
+手写BaseEntity实体类
+

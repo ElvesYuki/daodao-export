@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>export_web_manager</module>
-        <module>export_service_system</module>
         <module>export_domain</module>
         <module>export_dao</module>
         <module>export_common</module>
@@ -33,7 +32,7 @@
         <mybatis.spring.version>1.2.2</mybatis.spring.version>
         <mysql.version>5.1.32</mysql.version>
         <druid.version>1.0.9</druid.version>
-        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
         <activemq.version>5.11.2</activemq.version>
     </properties>
 
@@ -170,17 +169,17 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.0</version>
+            <version>2.9.9</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.9.0</version>
+            <version>2.9.9</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.9.0</version>
+            <version>2.9.9</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

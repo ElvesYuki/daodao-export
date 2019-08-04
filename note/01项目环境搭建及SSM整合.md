@@ -50,9 +50,27 @@ export_dao                       依赖     export_domain
 
 #### 4、配置Mybatis环境
 
-使用Mybastis_Generator逆向工程，从数据库表中生成实体类(手动添加实现序列化结构)等，
+使用Mybastis_Generator逆向工程，从数据库表中生成实体类(手动添加**实现序列化结构**4个)等，
 
 拷贝实体类，dao接口，mapper映射文件
 
 手写BaseEntity实体类
+
+#### 5、SSM整合配置
+
+**Spring和Mybatis整合配置**：applicationContext-dao.xml;
+
+​													applicationContext-service.xml;
+
+**dubbo整合配置**：applicationContext-dubbo.xml;
+
+​		service模块 web.xml 中监听所有配置文件
+
+**SpringMVC整合配置**：springmvc.xml;
+
+​		web_manager模块 web.xml 中监听所有配置文件
+
+
+
+
 

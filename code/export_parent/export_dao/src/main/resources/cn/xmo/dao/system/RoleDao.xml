@@ -244,4 +244,11 @@
       company_name = #{companyName,jdbcType=VARCHAR}
     where role_id = #{roleId,jdbcType=VARCHAR}
   </update>
+
+  <!--根据用户id查询用户的所有角色数据-->
+  <select id="findByUserId" resultMap="BaseResultMap">
+    SELECT * FROM  pe_role WHERE role_id IN (
+      SELECT role_id FROM pe_role_user WHERE user_id=#{userId}
+    )
+  </select>
 </mapper>

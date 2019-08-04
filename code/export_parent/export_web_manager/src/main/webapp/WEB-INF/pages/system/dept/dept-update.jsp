@@ -29,7 +29,7 @@
                     </ul>
                     <div class="tab-content">
                         <form id="editForm" action="${ctx}/system/dept/edit.do" method="post">
-                            <input type="text" name="id" value="${dept.id}">
+                            <input type="text" name="deptId" value="${dept.deptId}">
                             <div class="tab-pane active" id="tab-form">
                                 <div class="row data-type">
                                     <div class="col-md-2 title">部门名称</div>
@@ -38,10 +38,10 @@
                                     </div>
                                     <div class="col-md-2 title">上级部门</div>
                                     <div class="col-md-10 data line-height36">
-                                        <select class="form-control" name="parent.id">
+                                        <select class="form-control" name="parentId">
                                             <option value="">请选择</option>
                                             <c:forEach items="${deptList}" var="item">
-                                                <option ${dept.parent.id == item.id ?'selected':''} value="${item.id}">${item.deptName}</option>
+                                                <option ${dept.parentId == item.deptId ?'selected':''} value="${item.deptId}">${item.deptName}</option>
                                             </c:forEach>
                                         </select>
                                     </div>

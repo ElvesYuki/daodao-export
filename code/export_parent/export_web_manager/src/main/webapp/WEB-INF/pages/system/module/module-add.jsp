@@ -36,7 +36,7 @@
                                 <option value="">请选择</option>
                                 <c:forEach items="${menus}" var="item">
                                         <c:if test="${item.ctype != 2}">
-                                            <option ${module.parentId == item.id ?'selected':''} value="${item.id}">${item.name}</option>
+                                            <option ${module.parentId == item.moduleId ?'selected':''} value="${item.moduleId}">${item.name}</option>
                                         </c:if>
                                 </c:forEach>
                             </select>

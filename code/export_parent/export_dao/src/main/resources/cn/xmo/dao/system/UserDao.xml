@@ -398,4 +398,10 @@
       remark = #{remark,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
+
+  <!--根据邮箱查询用户-->
+  <select id="findByEmail" resultMap="BaseResultMap">
+    select * from pe_user where email= #{email}
+  </select>
+
 </mapper>

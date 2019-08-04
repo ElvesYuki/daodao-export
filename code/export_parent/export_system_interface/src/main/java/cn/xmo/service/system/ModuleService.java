@@ -49,9 +49,17 @@ public interface ModuleService {
 
     List findAll();
 
-    //根据角色id查询所有的模块
+    /**
+     * 根据角色id查询所有的模块
+     * @param roleId
+     * @return
+     */
     List<Module> findByRoleId(String roleId);
 
-    //根据用户id查询用户的所有可操作模块
-    List<Module> findByUserId(String id);
+    /**
+     * 根据用户id查询用户的所有可操作模块
+     * @param userId
+     * @return
+     */
+    List<Module> findByUserId(String userId);
 }

@@ -61,4 +61,7 @@ public interface RoleDao {
      * @mbg.generated
      */
     int updateByPrimaryKey(Role record);
+
+
+    List<Role> findByUserId(String id);
 }

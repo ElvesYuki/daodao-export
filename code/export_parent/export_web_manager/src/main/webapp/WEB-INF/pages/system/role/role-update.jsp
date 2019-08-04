@@ -29,7 +29,7 @@
                     </ul>
                     <div class="tab-content">
                         <form id="editForm" action="${ctx}/system/role/edit.do" method="post">
-                            <input type="hidden" name="id" value="${role.id}">
+                            <input type="hidden" name="roleId" value="${role.roleId}">
                             <div class="tab-pane active" id="tab-form">
                                 <div class="row data-type">
                                     <div class="col-md-2 title">角色名</div>

@@ -41,10 +41,9 @@ public class BaseController {
         Object obj = session.getAttribute("loginUser");
         if(obj != null) {
             User user = (User) obj;
-            //return user.getCompanyId();
-            return "1";
+            return user.getCompanyId();
         }else{
-            return "1";
+            return null;
         }
     }
 

@@ -1,6 +1,7 @@
 package cn.xmo.domain.system;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Module implements Serializable {
     /**
@@ -529,5 +530,33 @@ public class Module implements Serializable {
      */
     public void setOrderNo(Long orderNo) {
         this.orderNo = orderNo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {return true;}
+        if (!(o instanceof Module)) {return true;}
+        Module module = (Module) o;
+        return Objects.equals(getModuleId(), module.getModuleId()) &&
+                Objects.equals(getParentId(), module.getParentId()) &&
+                Objects.equals(getParentName(), module.getParentName()) &&
+                Objects.equals(getName(), module.getName()) &&
+                Objects.equals(getLayerNum(), module.getLayerNum()) &&
+                Objects.equals(getIsLeaf(), module.getIsLeaf()) &&
+                Objects.equals(getIco(), module.getIco()) &&
+                Objects.equals(getCpermission(), module.getCpermission()) &&
+                Objects.equals(getCurl(), module.getCurl()) &&
+                Objects.equals(getCtype(), module.getCtype()) &&
+                Objects.equals(getState(), module.getState()) &&
+                Objects.equals(getBelong(), module.getBelong()) &&
+                Objects.equals(getCwhich(), module.getCwhich()) &&
+                Objects.equals(getQuoteNum(), module.getQuoteNum()) &&
+                Objects.equals(getRemark(), module.getRemark()) &&
+                Objects.equals(getOrderNo(), module.getOrderNo());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getModuleId(), getParentId(), getParentName(), getName(), getLayerNum(), getIsLeaf(), getIco(), getCpermission(), getCurl(), getCtype(), getState(), getBelong(), getCwhich(), getQuoteNum(), getRemark(), getOrderNo());
     }
 }

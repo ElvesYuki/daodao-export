@@ -44,4 +44,8 @@ public interface UserService  {
      * @return Company;查询返回对象
      */
     User findById(String id);
+
+    void changeRole(String userId, String[] roleIds);
+
+    User findByEmail(String email);
 }

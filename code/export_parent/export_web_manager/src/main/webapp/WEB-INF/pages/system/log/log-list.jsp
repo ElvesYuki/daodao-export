@@ -42,6 +42,7 @@
                         <th class="sorting">用户名</th>
                         <th class="sorting">ip</th>
                         <th class="sorting">方法</th>
+                        <th class="sorting">操作时间</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -51,6 +52,7 @@
                             <td>${log.userName }</td>
                             <td>${log.ip}</td>
                             <td>${log.action}</td>
+                            <td>${log.time}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

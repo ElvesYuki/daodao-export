@@ -15,10 +15,10 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <!-- 页面meta /-->
-    <link rel="stylesheet" href="plugins/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
-    <script type="text/javascript" src="plugins/ztree/js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="plugins/ztree/js/jquery.ztree.core-3.5.js"></script>
-    <script type="text/javascript" src="plugins/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+    <link rel="stylesheet" href="${ctx}/plugins/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="${ctx}/plugins/ztree/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="${ctx}/plugins/ztree/js/jquery.ztree.core-3.5.js"></script>
+    <script type="text/javascript" src="${ctx}/plugins/ztree/js/jquery.ztree.excheck-3.5.js"></script>
 
     <SCRIPT type="text/javascript">
         var setting = {
@@ -32,40 +32,16 @@
             }
         };
 
-        /**
-         * 1.查询所有的模块
-         * 2.构造json数据
-         */
-        var zNodes =[
-            { id:11, pId:1, name:"随意勾选 1-1", open:true},
-            { id:111, pId:11, name:"随意勾选 1-1-1"},
-            { id:112, pId:11, name:"随意勾选 1-1-2"},
-            { id:12, pId:1, name:"随意勾选 1-2", open:true},
-            { id:121, pId:12, name:"随意勾选 1-2-1"},
-            { id:122, pId:12, name:"随意勾选 1-2-2"},
-            { id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
-            { id:21, pId:2, name:"随意勾选 2-1"},
-            { id:22, pId:2, name:"随意勾选 2-2", open:true},
-            { id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
-            { id:222, pId:22, name:"随意勾选 2-2-2"},
-            { id:23, pId:2, name:"随意勾选 2-3"},
-            { id:1, pId:0, name:"随意勾选 1", open:true}
-        ];
-
+        var zTreeObj ;
         $(document).ready(function(){
-            $.get("${ctx}/system/role/initModuleData.do?id=${role.id}",function(data) {
-                initZtree(data);
+
+            $.get("/system/role/getZtreeNodes.do?roleId=${role.roleId}",function (data) {
+                zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, data);
+                zTreeObj.expandAll(true);
             });
-            //$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
         });
 
-        var zTreeObj;
-
-        //根据获取到的json数据展示ztree树
-        function initZtree(data) {
-            zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, data);
-            zTreeObj.expandAll(true);//true：展开所有
-        }
 
         //实现权限分配
         function submitCheckedNodes() {
@@ -123,8 +99,8 @@
                     <!--工具栏/-->
                     <!-- 树菜单 -->
                     <form id="icform" name="icform" method="post" action="${ctx}/system/role/updateRoleModule.do">
-                        <input type="text" name="roleid" value="${role.id}"/>
-                        <input type="text" id="moduleIds" name="moduleIds" value=""/>
+                        <input type="text" name="roleId" value="${role.roleId}"/>
+                        <input type="text" id="moduleIds" name="moduleIds" value="${moduleIds}"/>
                         <div class="content_wrap">
                             <div class="zTreeDemoBackground left" style="overflow: visible">
                                 <ul id="treeDemo" class="ztree"></ul>

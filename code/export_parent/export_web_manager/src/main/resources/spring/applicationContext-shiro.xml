@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <description>Shiro与Spring整合</description>
+
+
+
+    <!-- <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
+     <property name="host" value="127.0.0.1:6379"></property>
+ </bean>
+
+ <bean id="cacheManager" class="org.crazycake.shiro.RedisCacheManager">
+     <property name="redisManager" ref="redisManager"></property>
+ </bean>-->
+
+    <!--<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
+
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:cache/ehcache-shiro.xml"></property>
+    </bean>-->
+
+    <!--    基于map集合的内存的缓存配置 : 缓存管理器
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
+    -->
+
+    <!--    基于ehcache的缓存配置 : 文件缓存
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        ehcache的配置文件
+        <property name="cacheManagerConfigFile" value="classpath:cache/ehcache-shiro.xml"></property>
+    </bean>
+    -->
+
+    <!--基于redis的缓存配置-->
+    <!--配置操作redis的管理工具
+    <bean id="redisManager" class="org.crazycake.shiro.RedisManager">
+        <property name="host" value="127.0.0.1:6379"></property>
+    </bean>
+
+    <bean id="cacheManager" class="org.crazycake.shiro.RedisCacheManager">
+        <property name="redisManager" ref="redisManager"></property>
+    </bean>
+    -->
+
+    <!--dubbo整合-->
+    <dubbo:application name="export_web_manager"></dubbo:application>
+    <dubbo:registry address="zookeeper://192.168.15.101:2181"></dubbo:registry>
+    <dubbo:consumer check="false"></dubbo:consumer>
+
+    <dubbo:reference id="userService" interface="cn.xmo.service.system.UserService" check="false" timeout="50000"/>
+    <dubbo:reference id="moduleService" interface="cn.xmo.service.system.ModuleService" check="false" timeout="50000"/>
+
+
+
+
+    <!--安全管理器-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 引用自定义的realm -->
+        <property name="realm" ref="authRealm"/>
+        <!-- 注入缓存管理器
+        <property name="cacheManager" ref="cacheManager"></property>
+        -->
+    </bean>
+
+    <!-- 自定义Realm域的编写 -->
+    <bean id="authRealm" class="cn.xmo.web.shiro.AuthRealm">
+        <!-- 注入自定义的密码比较器 -->
+        <property name="credentialsMatcher" ref="customerCredentialsMatcher"/>
+        <property name="userService" ref="userService"/>
+        <property name="moduleService" ref="moduleService"/>
+    </bean>
+
+    <!-- 自定义的密码比较器 -->
+    <bean id="customerCredentialsMatcher" class="cn.xmo.web.shiro.CustomCredentialsMatcher"/>
+
+    <!-- filter-name这个名字的值来自于web.xml中filter的名字 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!--登录页面  -->
+        <property name="loginUrl" value="/login.jsp"/>
+        <!--权限不足跳转的页面-->
+        <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+
+        <property name="filterChainDefinitions">
+            <!-- /**代表下面的多级目录也过滤 -->
+            <value>
+                    /company/** = perms["企业管理"]
+                    /system/module/list.do = perms["模块管理"]
+                    /system/dept/list.do = perms["部门管理"]
+                    /system/user/list.do = perms["用户管理"]
+                    /system/role/list.do = perms["角色管理"]
+                /index.jsp* = anon
+                /wechat/*.* = anon
+                /login.jsp* = anon
+                /login* = anon
+                /logout* = anon
+                /css/** = anon
+                /img/** = anon
+                /plugins/** = anon
+                /make/** = anon
+                /** = authc,user
+                /*.* = authc
+            </value>
+        </property>
+    </bean>
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- 生成代理，通过代理进行控制 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+
+    <!-- 安全管理器 -->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+</beans>

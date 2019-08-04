@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @Author: Elves
@@ -30,23 +31,32 @@ public class CompanyServiceImpl implements CompanyService {
         return new PageInfo<>(list);
     }
 
+    /**
+     *
+     * @param company:保存对象
+     */
     @Override
     public void save(Company company) {
-
+        company.setId(UUID.randomUUID().toString());
+        companyDao.insert(company);
     }
 
+    /**
+     *
+     * @param company:更新对象
+     */
     @Override
     public void update(Company company) {
-
+        companyDao.updateByPrimaryKeySelective(company);
     }
 
     @Override
     public void delete(String id) {
-
+        companyDao.deleteByPrimaryKey(id);
     }
 
     @Override
     public Company findById(String id) {
-        return null;
+        return companyDao.selectByPrimaryKey(id);
     }
 }

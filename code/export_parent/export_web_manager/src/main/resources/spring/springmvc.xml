@@ -45,9 +45,22 @@
     <!--注册类型转化器-->
     <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 
+
+    <!-- 开启shiro注解 -->
+<!--    <bean
+            class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+            depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true" />
+    </bean>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>-->
+
     <!--dubbo整合-->
     <dubbo:application name="export_web_manager"></dubbo:application>
     <dubbo:registry address="zookeeper://192.168.15.101:2181"></dubbo:registry>
     <dubbo:annotation package="cn.itcast.web.controller"></dubbo:annotation>
     <dubbo:consumer check="false"></dubbo:consumer>
+
 </beans>

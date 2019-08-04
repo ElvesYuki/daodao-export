@@ -1,13 +1,17 @@
 package cn.xmo.web.controller.system;
 
+import cn.xmo.domain.system.Module;
 import cn.xmo.domain.system.ModuleExample;
 import cn.xmo.service.system.ModuleService;
 import cn.xmo.web.controller.BaseController;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @Author: Elves
@@ -35,5 +39,40 @@ public class ModuleController extends BaseController {
         PageInfo info = moduleService.findAll(page, size, moduleExample);
         request.setAttribute("page",info);
         return "system/module/module-list";
+    }
+
+    @RequestMapping("/toAdd")
+    public String toAdd() {
+        //查询所有模块
+        List moduleList = moduleService.findAll();
+        request.setAttribute("menus",moduleList);
+        return "system/module/module-add";
+    }
+
+    @RequestMapping("/toUpdate")
+    public String toUpdate(String id) {
+        //查询所有模块
+        List moduleList = moduleService.findAll();
+        request.setAttribute("menus",moduleList);
+
+        Module module = moduleService.findById(id);
+        request.setAttribute("module",module);
+        return "system/module/module-update";
+    }
+
+    @RequestMapping("/edit")
+    public String edit(Module module) {
+        if(StringUtils.isEmpty(module.getModuleId())){
+            moduleService.save(module);
+        }else{
+            moduleService.update(module);
+        }
+        return "redirect:/system/module/list.do";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(String id) {
+        moduleService.delete(id);
+        return "redirect:/system/module/list.do";
     }
 }

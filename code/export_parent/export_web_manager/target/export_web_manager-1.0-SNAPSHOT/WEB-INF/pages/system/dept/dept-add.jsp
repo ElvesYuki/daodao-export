@@ -37,10 +37,10 @@
                                     </div>
                                     <div class="col-md-2 title">上级部门</div>
                                     <div class="col-md-10 data line-height36">
-                                        <select class="form-control" name="parent.id">
+                                        <select class="form-control" name="parentId">
                                             <option value="">请选择</option>
                                             <c:forEach items="${deptList}" var="item">
-                                                <option ${dept.parent.id == item.id ?'selected':''} value="${item.id}">${item.deptName}</option>
+                                                <option ${dept.parentId == item.deptId ?'selected':''} value="${item.deptId}">${item.deptName}</option>
                                             </c:forEach>
                                         </select>
                                     </div>

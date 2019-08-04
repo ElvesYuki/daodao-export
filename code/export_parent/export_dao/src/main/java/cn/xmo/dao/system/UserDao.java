@@ -1,5 +1,6 @@
 package cn.xmo.dao.system;
 
+import cn.xmo.domain.system.Role;
 import cn.xmo.domain.system.User;
 import cn.xmo.domain.system.UserExample;
 
@@ -61,4 +62,7 @@ public interface UserDao {
      * @mbg.generated
      */
     int updateByPrimaryKey(User record);
+
+
+    User findByEmail(String email);
 }

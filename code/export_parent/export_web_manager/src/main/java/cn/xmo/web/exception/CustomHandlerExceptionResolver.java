@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @Author: Elves
  * @Description:
- * @Date: Created in 17:27 2019/7/9
+ * @Date: Created in 22:11 2019/8/4
  * @Modified By:
  * 自定义异常处理器
  */
-/*public class CustomHandlerExceptionResolver implements HandlerExceptionResolver {
+public class CustomHandlerExceptionResolver implements HandlerExceptionResolver {
     @Override
-    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception ex) {
         if(ex instanceof UnauthorizedException) {
-            *//*
-             *基于shiro注解的授权抛出的异常
-             * 跳转到未授权页面
-             *//*
+
+             //基于shiro注解的授权抛出的异常
+             //跳转到未授权页面
+
             ModelAndView mv = new ModelAndView();
             mv.setViewName("forward:/unauthorized.jsp");
             return mv;
@@ -33,4 +33,4 @@ import javax.servlet.http.HttpServletResponse;
             return mv;
         }
     }
-}*/
+}

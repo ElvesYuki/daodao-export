@@ -303,4 +303,21 @@
       order_no = #{orderNo,jdbcType=DECIMAL}
     where module_id = #{moduleId,jdbcType=VARCHAR}
   </update>
+  <select id="findByRoleId" resultMap="BaseResultMap" >
+    SELECT * FROM ss_module WHERE module_id IN (
+      SELECT module_id FROM pe_role_module WHERE role_id =#{roleId})
+  </select>
+
+  <!--根据belong查询模块-->
+  <select id="findByBelong" resultMap="BaseResultMap">
+    select * from ss_module where belong=#{belong}
+  </select>
+
+  <!--根据用户id按照rbac的数据库表关联查询所有模块-->
+  <select id="findByUserId" resultMap="BaseResultMap">
+    SELECT * FROM ss_module WHERE module_id IN (
+      SELECT DISTINCT module_id FROM pe_role_module rm , pe_role_user ru
+      WHERE rm.role_id=ru.role_id AND ru.user_id=#{userId}
+    )
+  </select>
 </mapper>

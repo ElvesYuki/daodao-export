@@ -7,17 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>数据 - AdminLTE2定制版 | Log in</title>
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../plugins/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="../plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./plugins/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="./plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="./plugins/iCheck/square/blue.css">
 
 </head>
 
 <script>
     window.onload = function () {
-        if (window.parent.window != window) {
+        if ( window.parent.window != window ) {
             window.top.location = "/login.jsp";
         }
     }
@@ -59,9 +59,9 @@
         <div id="login_container"></div>
     </div>
 </div>
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/iCheck/icheck.min.js"></script>
+<script src="./plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="./plugins/iCheck/icheck.min.js"></script>
 <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
 <script>
     var obj = new WxLogin({

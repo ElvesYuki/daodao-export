@@ -23,7 +23,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">用户信息</div>
                 <form id="editForm" action="${ctx}/system/module/edit.do" method="post">
-                    <input type="hidden" name="id" value="${module.id}">
+                    <input type="hidden" name="moduleId" value="${module.moduleId}">
                     <input type="hidden" id="parentName" name="parentName" value="${module.parentName}">
                     <div class="row data-type" style="margin: 0px">
                         <div class="col-md-2 title">模块名</div>
@@ -37,7 +37,7 @@
                                 <option value="">请选择</option>
                                 <c:forEach items="${menus}" var="item">
                                     <c:if test="${item.ctype != 2}">
-                                        <option ${module.parentId == item.id ?'selected':''} value="${item.id}">${item.name}</option>
+                                        <option ${module.parentId == item.moduleId ?'selected':''} value="${item.moduleId}">${item.name}</option>
                                     </c:if>
                                 </c:forEach>
                             </select>

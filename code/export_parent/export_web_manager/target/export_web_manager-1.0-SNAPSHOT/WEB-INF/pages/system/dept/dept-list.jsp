@@ -25,7 +25,7 @@
         var id = getCheckId()
         if(id) {
             if(confirm("你确认要删除此条记录吗？")) {
-                location.href="${ctx}/system/dept/delete.do?id="+id;
+                location.href="${ctx}/system/dept/delete.do?deptId="+id;
             }
         }else{
             alert("请勾选待处理的记录，且每次只能勾选一个")
@@ -64,9 +64,9 @@
                     <div class="form-group form-inline">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/system/dept/toAdd.do"'><i class="fa fa-file-o"></i> 新建</button>
-                            <%--<shiro:hasPermission name="删除部门">
+                            <shiro:hasPermission name="删除部门">
                                 <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
-                            </shiro:hasPermission>--%>
+                            </shiro:hasPermission>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                             <td><input type="checkbox" name="id" value="${dept.deptId }"/></td>
                             <td>${st.count }</td>
                             <td>${dept.deptId }</td>
-                            <td>${dept.parent.deptName }</td>
+                            <td>${dept.parentName }</td>
                             <td><a href="${ctx}/system/dept/toUpdate.do?id=${dept.deptId }">${dept.deptName }</a></td>
                             <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/system/dept/toUpdate.do?id=${dept.deptId}"'>编辑</button></th>
                         </tr>

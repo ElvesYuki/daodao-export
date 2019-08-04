@@ -61,4 +61,10 @@ public interface ModuleDao {
      * @mbg.generated
      */
     int updateByPrimaryKey(Module record);
+
+    List<Module> findByRoleId(String roleId);
+
+    List<Module> findByBelong(int i);
+
+    List<Module> findByUserId(String userId);
 }

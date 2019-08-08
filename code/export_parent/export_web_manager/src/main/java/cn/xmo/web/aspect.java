@@ -67,4 +67,5 @@ public class aspect {
         sysLogService.save(log);
         return pjp.proceed();
     }
+    /*切换仓库测试*/
 }

@@ -31,8 +31,8 @@
 </div>
 </body>
 
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../../plugins/echarts/echarts.min.js"></script>
+<script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../../../plugins/echarts/echarts.min.js"></script>
 <script type="text/javascript">
     $.get("/stat/getSellData.do",function(data) {
 

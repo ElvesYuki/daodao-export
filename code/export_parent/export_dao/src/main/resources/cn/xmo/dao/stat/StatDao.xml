@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xmo.dao.stat.StatDao">
+
+    <!--1.获取厂家销量统计数据-->
+    <select id="getFactoryData" resultType="map">
+      SELECT factory_name name, SUM(amount) value FROM co_contract_product
+      WHERE company_id=#{companyId} GROUP BY factory_name
+    </select>
+
+    <!--2.获取销量排行数据-->
+    <select id="getSellData" resultType="map">
+        SELECT product_no name, SUM(amount) value  FROM co_contract_product  WHERE company_id=#{companyId}
+        GROUP BY  product_no ORDER BY SUM(amount)  DESC LIMIT 15
+    </select>
+
+    <!--3.获取系统访问压力图统计数据-->
+    <select id="getOnLineData" resultType="map">
+        SELECT info.a1 name,IFNULL(syslog.COUNT,0) value FROM st_online_info info LEFT JOIN  (
+            SELECT DATE_FORMAT(TIME,"%H") HOUR , COUNT(id) COUNT FROM st_sys_log WHERE company_id=#{companyId} GROUP BY DATE_FORMAT(TIME,"%H")
+        ) syslog ON  info.a1=syslog.HOUR
+    </select>
+
+    <!--4.登录ip次数的前十名-->
+    <select id="getIpTopTenData" resultType="map">
+    SELECT  ip name,COUNT(*) value FROM st_sys_log  GROUP BY name ORDER BY value DESC LIMIT 0,10;
+    </select>
+
+
+</mapper>

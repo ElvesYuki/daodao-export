@@ -19,6 +19,5 @@
 
 
     <!--dubbo注解的包扫描-->
-    <dubbo:annotation package="cn.xmo.service.system"></dubbo:annotation>
-
+    <dubbo:annotation package="cn.xmo.service"></dubbo:annotation>
 </beans>

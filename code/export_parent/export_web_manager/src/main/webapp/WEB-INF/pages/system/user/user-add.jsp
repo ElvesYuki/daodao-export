@@ -95,7 +95,7 @@
                         <div class="form-group form-inline">
                             <div class="radio"><label><input type="radio" ${user.degree==1?'checked':''} name="degree" value="1">系统管理员</label></div>
                             <div class="radio"><label><input type="radio" ${user.degree==2?'checked':''} name="degree" value="2">管理下属部门和人员</label></div>
-                            <div class="radio"><label><input type="radio" ${user.degree==3?'checked':''} name="degree" value="3">管理本部门</label></div>
+                            <div class="radio"><label><input type="radio" ${user.degree==3?'checked':''} name="degree" value="3">部门经理</label></div>
                             <div class="radio"><label><input type="radio" ${user.degree==4?'checked':''} name="degree" value="4">普通员工</label></div>
                         </div>
                     </div>

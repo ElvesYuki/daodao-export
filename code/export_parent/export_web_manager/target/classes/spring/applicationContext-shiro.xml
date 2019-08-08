@@ -92,12 +92,11 @@
         <property name="filterChainDefinitions">
             <!-- /**代表下面的多级目录也过滤 -->
             <value>
-                <!--
                     /company/** = perms["企业管理"]
-                    /system/dept/list.do = perms["部门管理"]
-                    /system/dept/edit.do = perms["部门管理"]
                     /system/module/list.do = perms["模块管理"]
-                -->
+                    /system/dept/list.do = perms["部门管理"]
+                    /system/user/list.do = perms["用户管理"]
+                    /system/role/list.do = perms["角色管理"]
                 /index.jsp* = anon
                 /wechat/*.* = anon
                 /login.jsp* = anon

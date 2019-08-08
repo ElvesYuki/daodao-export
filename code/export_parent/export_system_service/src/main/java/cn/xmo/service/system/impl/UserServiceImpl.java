@@ -46,6 +46,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User user) {
+        String password = Encrypt.md5(user.getPassword(), user.getEmail());
+        user.setPassword(password);
         userDao.updateByPrimaryKeySelective(user);
     }
 

@@ -75,8 +75,7 @@ public class UserController extends BaseController {
         //1.设置企业id
         user.setCompanyId(getLoginCompanyId());
         user.setCompanyName(getLoginCompanyName());
-        String password = user.getPassword() ;
-        user.setPassword(password);
+        String password = user.getPassword();
         if(StringUtils.isEmpty(user.getUserId())){
             userService.save(user);
 /*            //保存成功,向用户邮箱发送一封邮件

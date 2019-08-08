@@ -94,4 +94,17 @@ public class BaseEntity implements Serializable {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    @Override
+    public String toString() {
+        return "BaseEntity{" +
+                "createBy='" + createBy + '\'' +
+                ", createDept='" + createDept + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", companyId='" + companyId + '\'' +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }

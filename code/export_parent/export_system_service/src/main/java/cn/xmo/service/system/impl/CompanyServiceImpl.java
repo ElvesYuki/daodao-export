@@ -38,6 +38,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void save(Company company) {
         company.setId(UUID.randomUUID().toString());
+        company.setState(0);
         companyDao.insert(company);
     }
 

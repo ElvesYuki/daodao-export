@@ -2,6 +2,7 @@ package cn.xmo.service.cargo;
 
 import cn.xmo.domain.cargo.Factory;
 import cn.xmo.domain.cargo.FactoryExample;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -12,6 +13,14 @@ import java.util.List;
  * @Modified By:
  */
 public interface FactoryService {
+    /**
+     * 查询所有
+     * @param example
+     * @return
+     */
+    public List<Factory> findAll(FactoryExample example);
+
+    public PageInfo findAll(int page, int size, FactoryExample factoryExample);
 
     /**
      * 保存
@@ -33,10 +42,5 @@ public interface FactoryService {
      */
     Factory findById(String id);
 
-    /**
-     * 查询所有
-     * @param example
-     * @return
-     */
-    public List<Factory> findAll(FactoryExample example);
+
 }

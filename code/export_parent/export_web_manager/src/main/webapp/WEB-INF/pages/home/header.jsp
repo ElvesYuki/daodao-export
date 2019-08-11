@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
 <%@ include file="../base.jsp"%>
 <header class="main-header">
-    <a href="all-admin-index.html" class="logo">
+    <a href="#" class="logo">
         <span class="logo-mini"><img src="${ctx}/img/logo.png"></span>
         <span class="logo-lg">
                     <img src="${ctx}/img/export.png">

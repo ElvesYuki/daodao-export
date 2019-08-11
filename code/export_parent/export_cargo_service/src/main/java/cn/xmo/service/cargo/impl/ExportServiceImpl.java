@@ -112,7 +112,7 @@ public class ExportServiceImpl implements ExportService {
         }
 
         //0草稿 ，1.已提交
-        export.setState(0L);
+        export.setState(0);
         export.setExtNum(extcs.size());
         export.setProNum(cps.size());
         exportDao.insertSelective(export);
@@ -141,7 +141,7 @@ public class ExportServiceImpl implements ExportService {
         Export epExport = new Export();
         epExport.setId(exportResult.getExportId());
         epExport.setRemark(exportResult.getRemark());
-        epExport.setState((long) exportResult.getState());
+        epExport.setState(exportResult.getState());
         exportDao.updateByPrimaryKeySelective(epExport);
         //2.更新报运单商品的税收
         Set<ExportProductResult> products = exportResult.getProducts();
@@ -157,6 +157,6 @@ public class ExportServiceImpl implements ExportService {
 
     @Override
     public List<Export> findAll(ExportExample example) {
-        return null;
+        return exportDao.selectByExample(example);
     }
 }

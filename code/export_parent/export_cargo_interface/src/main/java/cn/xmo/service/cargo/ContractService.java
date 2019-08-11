@@ -5,7 +5,10 @@ import cn.xmo.domain.cargo.ContractExample;
 import com.github.pagehelper.PageInfo;
 
 /**
- * 购销合同的service接口
+ * @Author: Elves
+ * @Description: 购销合同
+ * @Date: Created in 11:07 2019/8/10
+ * @Modified By:
  */
 public interface ContractService {
 

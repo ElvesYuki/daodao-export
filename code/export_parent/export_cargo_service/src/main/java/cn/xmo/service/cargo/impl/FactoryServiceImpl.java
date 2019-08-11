@@ -5,6 +5,8 @@ import cn.xmo.domain.cargo.Factory;
 import cn.xmo.domain.cargo.FactoryExample;
 import cn.xmo.service.cargo.FactoryService;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -21,6 +23,32 @@ public class FactoryServiceImpl implements FactoryService {
 
     @Autowired
     private FactoryDao factoryDao;
+
+
+    /**
+     * 查询所有
+     *
+     * @param example
+     * @return
+     */
+    @Override
+    public List<Factory> findAll(FactoryExample example) {
+        return factoryDao.selectByExample(example);
+    }
+
+    /**
+     * 分页查询
+     * @param page
+     * @param size
+     * @param factoryExample
+     * @return
+     */
+    @Override
+    public PageInfo findAll(int page, int size, FactoryExample factoryExample) {
+        PageHelper.startPage(page, size);
+        List<Factory> list = factoryDao.selectByExample(factoryExample);
+        return new PageInfo(list);
+    }
     /**
      * 保存
      *
@@ -62,14 +90,5 @@ public class FactoryServiceImpl implements FactoryService {
         return factoryDao.selectByPrimaryKey(id);
     }
 
-    /**
-     * 查询所有
-     *
-     * @param example
-     * @return
-     */
-    @Override
-    public List<Factory> findAll(FactoryExample example) {
-        return factoryDao.selectByExample(example);
-    }
+
 }

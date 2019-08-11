@@ -162,7 +162,7 @@ public class Export extends BaseEntity implements Serializable {
      *
      * @mbg.generated
      */
-    private Long state;
+    private int state;
 
     /**
      *
@@ -595,7 +595,7 @@ public class Export extends BaseEntity implements Serializable {
      *
      * @mbg.generated
      */
-    public Long getState() {
+    public int getState() {
         return state;
     }
 
@@ -607,7 +607,7 @@ public class Export extends BaseEntity implements Serializable {
      *
      * @mbg.generated
      */
-    public void setState(Long state) {
+    public void setState(int state) {
         this.state = state;
     }
 

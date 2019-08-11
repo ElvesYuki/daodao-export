@@ -90,9 +90,11 @@
                     <div class="form-group form-inline">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/cargo/finance/toAdd.do"'><i class="fa fa-file-o"></i> 新建</button>
-                            <button type="button" class="btn btn-default" title="查看" onclick='view()'><i class="fa  fa-eye-slash"></i> 查看</button>
+                            <%--<button type="button" class="btn btn-default" title="查看" onclick='view()'><i class="fa  fa-eye-slash"></i> 查看</button>--%>
                             <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
+                            <button type="button" class="btn btn-default" title="提交" onclick="submit()"><i class="fa fa-retweet"></i> 提交</button>
+                            <button type="button" class="btn btn-default" title="取消" onclick="cancel()"><i class="fa fa-remove"></i> 取消</button>
                         </div>
                     </div>
                 </div>
@@ -108,8 +110,10 @@
                 <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
                     <thead>
                     <tr>
-                        <td><input type="checkbox" name="selid" onclick="checkAll('id',this)"></td>
-                        <th class="sorting"></th>
+                        <%--<td><input type="checkbox" name="id" onclick="checkAll('id',this)"></td>--%>
+                        <th class="" style="padding-right:0px;">
+
+                        </th>
                         <th class="sorting">制单人</th>
                         <th class="sorting">制单日期</th>
                         <th class="sorting">创建人</th>
@@ -126,20 +130,20 @@
                             <td>${o.inputBy}</td>
                             <td>${o.inputDate}</td>
                             <td>${o.createBy}</td>
-                            <td>${o.createDempt}</td>
+                            <td>${o.createDept}</td>
                             <td>${o.createTime}</td>
                             <td>${o.state}</td>
                             <td>
                                 <c:if test="${o.state==0}">草稿</c:if>
                                 <c:if test="${o.state==1}"><font color="green">已上报</font></c:if>
-                                <c:if test="${o.state==2}"><font color="red">已报运</font></c:if>
+                                <c:if test="${o.state==2}"><font color="red">已取消</font></c:if>
                             </td>
                             <td>
-                                <a href="${ctx }/cargo/export/toView.do?id=${o.financeId}">[查看]</a>
-                                <a href="${ctx }/cargo/finance/toUpdate.do?id=${o.financeId}">[编辑]</a>
-                                <c:if test="${o.state==2}">
+                                <%--<a href="${ctx }/cargo/export/toView.do?id=${o.financeId}">[查看]</a>--%>
+                                <a class="btn bg-olive btn-xs" href="${ctx }/cargo/finance/toUpdate.do?id=${o.financeId}">编辑</a>
+                                <%--<c:if test="${o.state==2}">
                                     <a href="${ctx}/cargo/export/exportPdf.do?id=${o.financeId}">[下载]</a>
-                                </c:if>
+                                </c:if>--%>
                             </td>
                         </tr>
                     </c:forEach>

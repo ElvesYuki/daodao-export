@@ -170,10 +170,10 @@ public class ExportController extends BaseController {
         }
         evo.setProducts(epvos);
         //5.webservice调用海关平台实现电子报运    http://localhost:8082/ws/export/user  post
-        WebClient client = WebClient.create("http://localhost:8090/ws/export/user");
+        WebClient client = WebClient.create("http://39.105.45.130:8610/jk_export/ws/export/user");
         client.post(evo);
         //6.查询电子报运结果 调用webservice
-        client = WebClient.create("http://localhost:8090/ws/export/user/"+id);
+        client = WebClient.create("http://39.105.45.130:8610/jk_export/ws/export/user/"+id);
         ExportResult exportResult = client.get(ExportResult.class);
         //7.更新报运单和报运单商品
         exportService.updateE(exportResult);

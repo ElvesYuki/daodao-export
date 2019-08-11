@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>数据 - AdminLTE2定制版 | Log in</title>
+    <title>刀刀军团公司saas-export服务</title>
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
         <p class="login-box-msg">登录系统</p>
         <form action="/login.do" method="post">
             <div class="form-group has-feedback">
-                <input type="email" name="email" value="lw@export.com" class="form-control" placeholder="Email">
+                <input type="email" name="email" value="axe@export.com" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
@@ -51,18 +51,18 @@
                 </div>
             </div>
         </form>
-        <div class="social-auth-links text-center">
+        <%--<div class="social-auth-links text-center">
             <p>- 或者 -</p>
             <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-qq"></i> 腾讯QQ用户登录</a>
             <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-weixin"></i> 微信用户登录</a>
-        </div>
-        <div id="login_container"></div>
+        </div>--%>
+        <%--<div id="login_container"></div>--%>
     </div>
 </div>
 <script src="./plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="./plugins/iCheck/icheck.min.js"></script>
-<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<%--<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>--%>
 <script>
     var obj = new WxLogin({
         self_redirect:false,

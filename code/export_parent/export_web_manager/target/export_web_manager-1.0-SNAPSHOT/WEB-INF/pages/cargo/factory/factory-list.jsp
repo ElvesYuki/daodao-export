@@ -93,7 +93,7 @@
                         <th class="sorting">负责人</th>
                         <th class="sorting">电话</th>
                         <th class="sorting">地址</th>
-                        <th class="text-center">操作</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -107,7 +107,7 @@
                             <td>${factory.contacts }</td>
                             <td>${factory.phone }</td>
                             <td>${factory.address }</td>
-                            <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="${ctx}/system/dept/toUpdate.do?id=${dept.deptId}"'>编辑</button></th>
+
                         </tr>
                     </c:forEach>
                     </tbody>

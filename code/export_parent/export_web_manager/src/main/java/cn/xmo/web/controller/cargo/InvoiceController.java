@@ -2,6 +2,7 @@ package cn.xmo.web.controller.cargo;
 
 import cn.xmo.domain.cargo.Invoice;
 import cn.xmo.domain.cargo.InvoiceExample;
+import cn.xmo.domain.cargo.Shipping;
 import cn.xmo.domain.cargo.ShippingExample;
 import cn.xmo.domain.system.User;
 import cn.xmo.service.cargo.InvoiceService;
@@ -66,8 +67,12 @@ public class InvoiceController extends BaseController {
         invoice.setCompanyId(getLoginCompanyId());
             User loginUser = getLoginUser();
             invoice.setCreateBy(loginUser.getUserName());
-            invoice.setCreateDept(loginUser.getDeptId());
+            invoice.setCreateDept(loginUser.getDeptName());
+            invoice.setCompanyName(loginUser.getCompanyName());
             invoiceService.save(invoice);
+            Shipping shipping = shippingService.findById(invoice.getInvoiceId());
+            shipping.setState(2);
+            shippingService.save(shipping);
         return "redirect:/cargo/invoice/list.do";
     }
 
@@ -79,6 +84,9 @@ public class InvoiceController extends BaseController {
 
     @RequestMapping("/delete")
     public String delete(String id){
+        Shipping shipping = shippingService.findById(id);
+        shipping.setState(1);
+        shippingService.save(shipping);
         invoiceService.delete(id);
         return "redirect:/cargo/invoice/list.do";
     }

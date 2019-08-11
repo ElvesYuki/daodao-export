@@ -92,11 +92,30 @@ public class FinanceController extends BaseController {
     }
 
     @RequestMapping("/save")
-    public String save ( Finance finance ) throws ParseException {
+    public String save ( Finance finance ){
         finance.setInputDate( new Date() );
         finance.setCreateBy(getLoginUser().getUserName());
         finance.setCreateDept(getLoginUser().getDeptName());
+        finance.setState(0);
         financeService.save( finance );
+        return "redirect:/cargo/finance/list.do";
+    }
+
+    @RequestMapping("/submit")
+    public String submit(String id){
+        Finance finance = financeService.findById(id);
+        if (finance.getState() != 1){
+            finance.setState(1);
+            financeService.update(finance);
+        }
+        return "redirect:/cargo/finance/list.do";
+    }
+
+    @RequestMapping("/cancel")
+    public String cancel(String id){
+        Finance finance = financeService.findById(id);
+        finance.setState(2);
+        financeService.update(finance);
         return "redirect:/cargo/finance/list.do";
     }
 }

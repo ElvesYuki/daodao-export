@@ -18,7 +18,7 @@
     <dubbo:application name="export_cargo_service"></dubbo:application>
     <!--配置注册中心  : zookeeper的请求路径-->
 
-    <dubbo:registry address="zookeeper://192.168.15.101:2181"></dubbo:registry>
+    <dubbo:registry address="zookeeper://39.105.45.130:2181"></dubbo:registry>
     <!--配置协议类型  name:协议类(dubbo)  port:不是tomcat端口,当前服务提供者暴露的端口 从20880开始 -->
     <dubbo:protocol name="dubbo" port="20882"></dubbo:protocol>
     <!--dubbo注解的包扫描-->

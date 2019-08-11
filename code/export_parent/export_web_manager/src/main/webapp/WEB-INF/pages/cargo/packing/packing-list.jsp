@@ -91,7 +91,7 @@
                         <div class="form-group form-inline">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default" title="新建" onclick='location.href="${ctx}/cargo/packing/toAdd.do"'><i class="fa fa-file-o"></i> 新建</button>
-                                <button type="button" class="btn btn-default" title="查看" onclick='view()'><i class="fa  fa-eye-slash"></i> 查看</button>
+                                <%--<button type="button" class="btn btn-default" title="查看" onclick='view()'><i class="fa  fa-eye-slash"></i> 查看</button>--%>
                                 <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                                 <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                                 <button type="button" class="btn btn-default" title="提交" onclick="submit()"><i class="fa fa-retweet"></i> 提交</button>
@@ -153,7 +153,7 @@
                                 </td>
                                 <td>
 
-                                    <a href="${ctx }/cargo/packing/toUpdate.do?id=${o.packingListId}">[编辑]</a>
+                                    <a class="btn bg-olive btn-xs" href="${ctx }/cargo/packing/toUpdate.do?id=${o.packingListId}">编辑</a>
 
                                 </td>
                             </tr>

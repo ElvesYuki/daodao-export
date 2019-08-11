@@ -26,9 +26,9 @@
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql:///saas-export"/>
+        <property name="url" value="jdbc:mysql://39.105.45.130:13380/daodao-export"/>
         <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="password" value="09120610"/>
     </bean>
 
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

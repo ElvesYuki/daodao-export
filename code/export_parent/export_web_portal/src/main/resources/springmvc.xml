@@ -18,6 +18,6 @@
 	<!--dubbo消费者配置 -->
 
     <dubbo:application name="export_web_portal"></dubbo:application>
-    <dubbo:registry address="zookeeper://192.168.15.101:2181"></dubbo:registry>
+    <dubbo:registry address="zookeeper://39.105.45.130:2181"></dubbo:registry>
     <dubbo:annotation package="cn.xmo.web.portal.controller"></dubbo:annotation>
 </beans>

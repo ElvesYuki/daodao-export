@@ -7,7 +7,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="${ctx}/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="${ctx}/img/axe_vert160_160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p> ${sessionScope.loginUser.userName}</p>

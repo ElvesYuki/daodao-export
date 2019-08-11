@@ -70,12 +70,11 @@
             --%>
             <form id="editForm" action="${ctx}/cargo/invoice/update.do" method="post" enctype="multipart/form-data">
                 <input type="text" name="invoiceId" value="${invoice.invoiceId}">
-                <input type="text" name="scNo" id="scNo" value="${invoice.scNo}">
                 <div class="row data-type" style="margin: 0px">
-                    <div class="col-md-2 title">发票号</div>
+                    <%--<div class="col-md-2 title">发票号</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control"  id="shipId" placeholder="发票号" name="invoiceId" >
-                    </div>
+                    </div>--%>
 
                     <div class="col-md-2 title">blno</div>
                     <div class="col-md-4 data">

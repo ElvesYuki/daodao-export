@@ -113,6 +113,7 @@
                         <th class="sorting">状态</th>
                         <th class="sorting">创建人</th>
                         <th class="sorting">创建部门</th>
+                        <th class="sorting">操作</th>
                         <%--<th class="sorting">创建日期</th>--%>
                     </tr>
                     </thead>

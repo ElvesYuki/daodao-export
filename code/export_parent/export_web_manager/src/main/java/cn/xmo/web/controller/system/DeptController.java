@@ -98,13 +98,13 @@ public class DeptController extends BaseController {
 
     /**
      *
-     * @param id 根据id删除
+     * @param deptId 根据id删除
      * @return 跳转页面
      */
     @RequestMapping("/delete")
-    public String delete(String id) {
+    public String delete(String deptId) {
         //1.调用service
-        deptService.delete(id);
+        deptService.delete(deptId);
         //2.重定向到列表
         return "redirect:/system/dept/list.do";
     }

@@ -79,6 +79,7 @@ public class PackingController extends BaseController {
     @RequestMapping("/edit")
     public String edit(Packing packing){
         if (StringUtils.isEmpty(packing.getPackingListId())){
+            packing.setCreateBy(getLoginUser().getUserName());
             packingService.save(packing);
         }else {
             packingService.update(packing);

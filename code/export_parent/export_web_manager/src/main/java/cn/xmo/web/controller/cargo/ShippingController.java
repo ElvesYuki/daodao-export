@@ -92,7 +92,7 @@ public class ShippingController extends BaseController {
             shipping.setState(1);
             shippingService.update( shipping );
             Packing pack  = packingService.findById(id);
-            pack.setState(5);
+            pack.setState(4);
             packingService.update(pack);
         }
         return "redirect:/cargo/shipping/list.do";
@@ -108,7 +108,7 @@ public class ShippingController extends BaseController {
             shipping.setState(0);
             shippingService.update( shipping );
             Packing pack  = packingService.findById(id);
-            pack.setState(4);
+            pack.setState(3);
             packingService.update(pack);
         }
         return "redirect:/cargo/shipping/list.do";

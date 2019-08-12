@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd
+		http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+    <context:component-scan base-package="cn.xmo.web.jms"></context:component-scan>
+
+    <!--连接工厂-->
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <constructor-arg name="brokerURL" value="tcp://39.105.45.130:8698/"></constructor-arg>
+    </bean>
+
+    <!--缓存连接工厂-->
+    <bean class="org.springframework.jms.connection.CachingConnectionFactory" id="cachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="connectionFactory"></property>
+    </bean>
+
+    <!--spring整合mq之后,发送消息的对象-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="cachingConnectionFactory"></property>
+    </bean>
+
+    <!--工具类-->
+    <bean id="springProducer" class="cn.xmo.web.jms.EmailProducer"></bean>
+
+    <!--目的地-->
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg name="name" value="daodaoEmail-queue"></constructor-arg>
+    </bean>
+
+    <!--<bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg name="name" value="daodaoEmail-topic"></constructor-arg>
+    </bean>-->
+</beans>

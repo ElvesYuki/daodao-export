@@ -1,9 +1,6 @@
 package cn.xmo.web.controller.cargo;
 
-import cn.xmo.domain.cargo.Invoice;
-import cn.xmo.domain.cargo.InvoiceExample;
-import cn.xmo.domain.cargo.Shipping;
-import cn.xmo.domain.cargo.ShippingExample;
+import cn.xmo.domain.cargo.*;
 import cn.xmo.domain.system.User;
 import cn.xmo.service.cargo.InvoiceService;
 import cn.xmo.service.cargo.PackingService;
@@ -14,6 +11,8 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Date;
 
 @Controller
 @RequestMapping("/cargo/invoice")
@@ -65,14 +64,15 @@ public class InvoiceController extends BaseController {
     @RequestMapping("/edit")
     public String edit(Invoice invoice){
         invoice.setCompanyId(getLoginCompanyId());
-            User loginUser = getLoginUser();
-            invoice.setCreateBy(loginUser.getUserName());
-            invoice.setCreateDept(loginUser.getDeptName());
-            invoice.setCompanyName(loginUser.getCompanyName());
-            invoiceService.save(invoice);
-            Shipping shipping = shippingService.findById(invoice.getInvoiceId());
-            shipping.setState(2);
-            shippingService.save(shipping);
+        User loginUser = getLoginUser();
+        invoice.setCreateBy(loginUser.getUserName());
+        invoice.setCreateDept(loginUser.getDeptName());
+        invoice.setCompanyName(loginUser.getCompanyName());
+        invoice.setCreateTime(new Date());
+        invoiceService.save(invoice);
+        Shipping shipping = shippingService.findById(invoice.getInvoiceId());
+        shipping.setState(2);
+        shippingService.save(shipping);
         return "redirect:/cargo/invoice/list.do";
     }
 
@@ -97,6 +97,9 @@ public class InvoiceController extends BaseController {
         if (invoice.getState() != 1){
             invoice.setState(1);
             invoiceService.update(invoice);
+            Packing packing = packingService.findById(id);
+            packing.setState(4);
+            packingService.update(packing);
         }
         return "redirect:/cargo/invoice/list.do";
     }
@@ -106,6 +109,9 @@ public class InvoiceController extends BaseController {
         Invoice invoice = invoiceService.findById(id);
         invoice.setState(2);
         invoiceService.update(invoice);
+        Packing packing = packingService.findById(id);
+        packing.setState(3);
+        packingService.update(packing);
         return "redirect:/cargo/invoice/list.do";
     }
 

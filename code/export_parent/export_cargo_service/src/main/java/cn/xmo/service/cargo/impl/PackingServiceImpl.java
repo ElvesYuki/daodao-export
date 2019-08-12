@@ -56,7 +56,7 @@ public class PackingServiceImpl implements PackingService {
         //设置报运单数量
         packing.setExportNos(size.toString());
 
-        packing.setState(3);
+        packing.setState(0);
         packingDao.insert(packing);
     }
 

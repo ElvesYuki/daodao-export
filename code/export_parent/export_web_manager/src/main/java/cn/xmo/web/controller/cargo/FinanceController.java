@@ -3,8 +3,10 @@ package cn.xmo.web.controller.cargo;
 import cn.xmo.domain.cargo.Finance;
 import cn.xmo.domain.cargo.FinanceExample;
 import cn.xmo.domain.cargo.InvoiceExample;
+import cn.xmo.domain.cargo.Packing;
 import cn.xmo.service.cargo.FinanceService;
 import cn.xmo.service.cargo.InvoiceService;
+import cn.xmo.service.cargo.PackingService;
 import cn.xmo.service.system.DeptService;
 import cn.xmo.web.controller.BaseController;
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -32,6 +34,8 @@ public class FinanceController extends BaseController {
     private DeptService deptService;
     @Reference
     private InvoiceService invoiceService;
+    @Reference
+    private PackingService packingService;
 
     @RequestMapping("/list")
     public String list ( @RequestParam(defaultValue = "1") int page,
@@ -107,6 +111,9 @@ public class FinanceController extends BaseController {
         if (finance.getState() != 1){
             finance.setState(1);
             financeService.update(finance);
+            Packing packing = packingService.findById(id);
+            packing.setState(5);
+            packingService.update(packing);
         }
         return "redirect:/cargo/finance/list.do";
     }
@@ -116,6 +123,9 @@ public class FinanceController extends BaseController {
         Finance finance = financeService.findById(id);
         finance.setState(2);
         financeService.update(finance);
+        Packing packing = packingService.findById(id);
+        packing.setState(4);
+        packingService.update(packing);
         return "redirect:/cargo/finance/list.do";
     }
 }

@@ -104,7 +104,7 @@ public class PackingController extends BaseController {
         //1 查询
         Packing packing = packingService.findById(id);
         //2.判断状态、设置状态并修改
-            packing.setState(1);
+            packing.setState(3);
             packingService.update(packing);
         return "redirect:/cargo/packing/list.do";
     }

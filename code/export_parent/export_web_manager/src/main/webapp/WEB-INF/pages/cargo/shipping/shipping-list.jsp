@@ -107,8 +107,8 @@
                         <%--<th class="sorting">是否转船</th>--%>
                         <th class="sorting">份数</th>
                         <th class="text-center">扼要说明</th>
-                        <th class="text-center">运输要求</th>
-                        <%--<th class="text-center">运费说明</th>--%>
+                        <%--<th class="text-center">运输要求</th>--%>
+                        <th class="text-center">运费说明</th>
                         <th class="sorting">复核人</th>
                         <th class="sorting">状态</th>
                         <th class="sorting">创建人</th>
@@ -136,8 +136,8 @@
                         <%--<td>${item.isTrans}</td>--%>
                         <td>${item.copyNum}</td>
                         <td>${item.remark}</td>
-                        <td>${item.specialCondition}</td>
-                        <%--<td>${item.freight}</td>--%>
+                        <%--<td>${item.specialCondition}</td>--%>
+                        <td>${item.freight}</td>
                         <td>${item.checkBy}</td>
                         <td><c:if test="${item.state==0}">草稿</c:if>
                             <c:if test="${item.state==1}"><font color="green">已上报</font></c:if></td>

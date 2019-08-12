@@ -7,8 +7,10 @@ import cn.xmo.service.system.DeptService;
 import cn.xmo.service.system.RoleService;
 import cn.xmo.service.system.UserService;
 import cn.xmo.web.controller.BaseController;
+import cn.xmo.web.jms.EmailProducer;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +43,7 @@ public class UserController extends BaseController {
     public String list(@RequestParam(defaultValue = "1") int page,
                        @RequestParam(defaultValue = "5") int size){
         UserExample userExample = new UserExample();
+        Integer degree = getLoginUser().getDegree();
 
         PageInfo info = userService.findAll(page, size, userExample);
         request.setAttribute("page",info);
@@ -70,6 +73,9 @@ public class UserController extends BaseController {
         return "system/user/user-update";
     }
 
+    @Autowired
+    private EmailProducer emailProducer;
+
     @RequestMapping("/edit")
     public String edit(User user) {
         //1.设置企业id
@@ -78,16 +84,16 @@ public class UserController extends BaseController {
         String password = user.getPassword();
         if(StringUtils.isEmpty(user.getUserId())){
             userService.save(user);
-/*            //保存成功,向用户邮箱发送一封邮件
+            //保存成功,向用户邮箱发送一封邮件
             String to = user.getEmail();
-            String subject = "欢迎使用saas-export系统";
-            String content = "尊敬的用户:"+user.getUserName()+"你好,欢迎使用saas系统,您登陆的访问url:http://localhost:8088/login.jsp," +
+            String subject = "欢迎使用刀刀军团saas-export系统";
+            String content = "尊敬的用户:"+user.getUserName()+"你好,欢迎使用saas系统,您登陆的访问url:http://localhost:8011/login.jsp" +
                     "登陆账户:"+to + ",登陆密码:"+password;
             try {
-                MailUtil.sendMsg(to,subject,content);
+                emailProducer.sendMsg(to, subject, content);
             } catch (Exception e) {
                 e.printStackTrace();
-            }*/
+            }
         }else{
             userService.update(user);
         }

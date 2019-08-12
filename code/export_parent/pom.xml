@@ -19,6 +19,7 @@
         <module>export_stat_interface</module>
         <module>export_stat_service</module>
         <module>export_web_portal</module>
+        <module>export_jms</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -39,27 +39,17 @@ public class ShippingServiceImpl implements ShippingService {
         //设置状态
         shipping.setState(0);
         shippingDao.insertSelective(shipping);
-        //根据id查询装箱单
-        Packing packing = packingDao.selectByPrimaryKey(shipping.getShippingOrderId());
-        packing.setPackingListId( shipping.getShippingOrderId() );
-        packing.setState( 4 );
-        packingDao.updateByPrimaryKey(packing);
     }
 
     @Override
     public void update(Shipping shipping) {
-        //根据id查询装箱单
-        Packing packing = packingDao.selectByPrimaryKey(shipping.getShippingOrderId());
-        packing.setPackingListId( shipping.getShippingOrderId() );
-        packing.setState(4);
-        packingDao.updateByPrimaryKey(packing);
         shippingDao.updateByPrimaryKeySelective(shipping);
     }
 
     @Override
     public void delete(String id) {
         Packing packing = packingDao.selectByPrimaryKey(id);
-        packing.setState(4);
+        packing.setState(3);
         packingDao.updateByPrimaryKey(packing);
         shippingDao.deleteByPrimaryKey(id);
     }

@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="col-md-2 title">创建时间</div>
-                    <div class="col-md-4 data">
+                    <%--<div class="col-md-4 data">
                         <div class="input-group date">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
@@ -116,6 +116,16 @@
                                    value="<fmt:formatDate value="${invoice.createTime}" pattern="yyyy-MM-dd"/>" id="signingDate">
                         </div>
                     </div>
+--%>
+                        <div class="col-md-4 data">
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" placeholder="创建时间"  name="loadingDate" class="form-control pull-right"
+                                       value="<fmt:formatDate value="${invoice.createTime}" pattern="yyyy-MM-dd"/>" id="loadingDate">
+                            </div>
+                        </div>
                 </div>
             </form>
         </div>
